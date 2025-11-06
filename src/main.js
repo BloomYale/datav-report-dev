@@ -1,5 +1,9 @@
 import { createApp } from 'vue'
-import './style.css'
 import App from './App.vue'
+import * as Echarts from 'echarts'
+import router from './router'
+const app = createApp(App)
 
-createApp(App).mount('#app')
+app.provide('$echarts', Echarts)
+app.use(router)
+app.mount('#app')
