@@ -1,8 +1,7 @@
 <template>
     <common-card title="累计用户数" value="1,087,503">
         <template v-slot>
-            <div id="total-users-chart" :style="{ width: '100%', height: '100%' }">
-            </div>
+           <v-chart :option="getOption()"></v-chart>
         </template>
         <template v-slot:footer>
             <div class="total-users-footer">
@@ -21,10 +20,8 @@
 import CommonCard from '../CommonCard/index.vue';
 import * as echarts from 'echarts'
 import { ref, onMounted } from 'vue'
-onMounted(() => {
-    const chartDom = document.getElementById('total-users-chart')
-    const chart = echarts.init(chartDom)
-    chart.setOption({
+const getOption = () => {
+    return {
         color: ['#45c946', '#eaeaea'],
         xAxis: {
             type: 'value',
@@ -89,9 +86,8 @@ onMounted(() => {
         grid: {
             top: 0, bottom: 0, left: 0, right: 0
         }
-    })
-
-})
+    }
+};
 </script>
 
 <style lang="scss" scoped>

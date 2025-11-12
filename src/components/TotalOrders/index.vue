@@ -1,8 +1,7 @@
 <template>
     <common-card title="累计订单量" value="2,157,420">
         <template v-slot>
-            <div id="total-orders-chart" :style="{ width: '100%', height: '100%' }">
-            </div>
+            <v-chart :option="getOption()"></v-chart>
         </template>
         <template v-slot:footer>
             <span class="emphasis">昨日订单量：2,000,000</span>
@@ -15,9 +14,9 @@ import CommonCard from '../CommonCard/index.vue';
 import * as echarts from 'echarts'
 import { ref, onMounted } from 'vue'
 onMounted(() => {
-    const chartDom = document.getElementById('total-orders-chart')
-    const chart = echarts.init(chartDom)
-    chart.setOption({
+})
+const getOption = () => {
+    return {
         xAxis: {
             type: 'category',
             show: false,
@@ -43,7 +42,6 @@ onMounted(() => {
         grid: {
             top: 0, bottom: 0, left: 0, right: 0
         }
-    })
-
-})
+    }
+};
 </script>

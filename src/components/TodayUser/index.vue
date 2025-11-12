@@ -1,8 +1,7 @@
 <template>
     <common-card title="今日交易用户数" value="81,014">
         <template v-slot>
-            <div id="today-users-chart" :style="{ width: '100%', height: '100%' }">
-            </div>
+            <v-chart :option="getOption()"></v-chart>
         </template>
         <template v-slot:footer>
             <span class="emphasis">退货率：5.14%</span>
@@ -14,10 +13,8 @@
 import CommonCard from '../CommonCard/index.vue';
 import * as echarts from 'echarts'
 import { ref, onMounted } from 'vue'
-onMounted(() => {
-    const chartDom = document.getElementById('today-users-chart')
-    const chart = echarts.init(chartDom)
-    chart.setOption({
+const getOption = () => {
+    return {
         color: ['#3398DB'],
         xAxis: {
             type: 'category',
@@ -35,9 +32,8 @@ onMounted(() => {
         grid: {
             top: 0, bottom: 0, left: 0, right: 0
         }
-    })
-
-})
+    }
+};
 </script>
 
 <style lang="scss" scoped></style>
